@@ -1,6 +1,7 @@
 {
-  "name": "@roadiehq/rag-ai-node",
-  "version": "0.1.4",
+  "name": "@roadiehq/rag-ai-backend-embeddings-azure-openai",
+  "description": "The Azure OpenAI backend module for the @roadiehq/rag-ai plugin.",
+  "version": "0.1.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "license": "Apache-2.0",
@@ -10,7 +11,7 @@
     "types": "dist/index.d.ts"
   },
   "backstage": {
-    "role": "node-library"
+    "role": "backend-plugin-module"
   },
   "bugs": {
     "url": "https://github.com/RoadieHQ/roadie-backstage-plugins/issues",
@@ -19,7 +20,7 @@
   "repository": {
     "type": "git",
     "url": "github:RoadieHQ/roadie-backstage-plugins",
-    "directory": "plugins/backend/rag-ai-node"
+    "directory": "plugins/backend/rag-ai-backend-embeddings-azure-openai"
   },
   "scripts": {
     "start": "backstage-cli package start",
@@ -31,14 +32,17 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
-    "@backstage/types": "^1.1.1",
-    "@langchain/core": "^0.2.18",
-    "@backstage/backend-plugin-api": "^0.6.17"
+    "@langchain/azure-openai": "^0.0.11"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.26.4"
+    "@backstage/backend-test-utils": "^0.3.7",
+    "@backstage/cli": "^0.26.4",
+    "esbuild": "^0.19.9",
+    "tsx": "^4.6.2"
   },
   "files": [
-    "dist"
-  ]
+    "dist",
+    "config.d.ts"
+  ],
+  "configSchema": "config.d.ts"
 }

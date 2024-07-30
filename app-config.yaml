@@ -7,7 +7,13 @@ organization:
 
 backend:
   baseUrl: http://localhost:7007
-
+  database:
+    client: pg
+    connection:
+      host: ${BACKSTAGE_POSTGRES_HOST}
+      port: ${BACKSTAGE_POSTGRES_PORT}
+      user: ${BACKSTAGE_POSTGRES_USER}
+      password: ${BACKSTAGE_POSTGRES_PASSWORD}
   listen:
     port: 7007
   csp:
@@ -16,9 +22,9 @@ backend:
     origin: http://localhost:3000
     methods: [GET, POST, PUT, DELETE]
     credentials: true
-  database:
-    client: better-sqlite3
-    connection: ':memory:'
+  # database:
+  #   client: better-sqlite3
+  #   connection: ':memory:'
   cache:
     store: memory
   auth:
@@ -223,3 +229,11 @@ bugsnag:
 
 iframe:
   allowList: ['example.com']
+
+ai:
+  embeddings:
+    azureOpenAi:
+      apiKey: ${AZURE_OPENAI_API_KEY}
+      apiVersion: ${AZURE_OPENAI_API_VERSION}
+      deploymentName: ${AZURE_OPENAI_DEPLOYMENT_NAME}
+      basePath: ${AZURE_OPENAI_BASE_PATH}
